@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+env/
+.env
+.venv
+*.conda/
+.vscode
+
+# Datasets and Raw Audio (CRITICAL: Do not upload raw data)
+data/raw/
+Datasets/
+*.flac
+*.wav
+*.mp3
+
+# Model Checkpoints and Weights
+*.pt
+*.pth
+*.ckpt
+models/checkpoints/
+Version-*/*.pt
+
+# Generated Outputs and Logs
+Paper1_Data_Exports/
+outputs/
+*.csv
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db

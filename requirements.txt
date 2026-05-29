@@ -1,0 +1,22 @@
+librosa
+numpy
+matplotlib
+seaborn
+scikit-learn
+torch
+tensorflow
+transformers
+tqdm
+# Core Deep Learning & Audio Processing
+torch==2.6.0
+torchaudio==2.6.0
+transformers==5.9.0
+
+# Data Manipulation & Metrics
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.2.2
+
+# Visualization & Utilities
+matplotlib>=3.7.1
+tqdm>=4.65.0
