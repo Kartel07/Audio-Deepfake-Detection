@@ -1,7 +1,3 @@
-# Audio-Deepfake-Detection
-A cross-corpus evaluation framework analyzing the impact of architectural inductive biases (2D CNN, ResNet, 1D RawNet2, and self-supervised XLS-R Transformers) on speech deepfake detection under acoustic domain shift from Fake-or-Real (FoR) to ASVspoof 5.
-
-
 # Empirical Evaluation of Architectural Inductive Biases in Audio Deepfake Detection Under Acoustic Domain Shift
 
 This repository contains the complete implementation, evaluation pipelines, and raw benchmark score exports for a controlled comparative study exploring how distinct neural network topologies generalize under severe cross-corpus acoustic domain shift. 
@@ -19,7 +15,7 @@ This project establishes a standardized benchmark to analyze how different model
 * **Version 2 (Deep ResNet):** A deep Residual Network designed to evaluate whether scaling hierarchical spatial capacity improves representation invariance.
 * **Version 3 (XLS-R Transformer):** A 1D raw-waveform backend utilizing a self-supervised, 300-million parameter multilingual XLS-R architecture operating via global self-attention.
 * **Version 4 (RawNet2):** A specialized speech forensic architecture integrating a learnable 1D SincNet frontend to enforce physical band-pass filter constraints directly on time-domain signals.
-* **Version 5 (Orthogonal Fusion Engine):** A late-stage late-fusion framework aggregating unweighted posterior probabilities from the deep ResNet and the self-supervised Transformer to exploit decoupled error surfaces.
+* **Version 5 (Orthogonal Fusion Engine):** A late-stage fusion framework aggregating unweighted posterior probabilities from the deep ResNet and the self-supervised Transformer to exploit decoupled error surfaces.
 
 ---
 
@@ -31,8 +27,8 @@ This project establishes a standardized benchmark to analyze how different model
 
 ### Standardization Pipeline
 All audio data undergoes deterministic preprocessing prior to model feature engineering:
-* Monophonic channel reduction and strict resampling to $16\text{ kHz}$.
-* Temporal alignment to a rigid 4.0-second window ($64,000$ discrete samples) via symmetric zero-padding or uniform truncation.
+* Monophonic channel reduction and strict resampling to 16 kHz.
+* Temporal alignment to a rigid 4.0-second window (64,000 discrete samples) via symmetric zero-padding or uniform truncation.
 * Log-mel spectrograms computed using a 1024-point FFT, 256-sample hop length, and 128 Mel bins (where applicable).
 
 ---
@@ -43,16 +39,16 @@ The models exhibit starkly divergent vulnerability patterns when transitioned fr
 
 | Architecture | Input Domain | In-Domain EER | Cross-Corpus EER | $\Delta$ EER |
 | :--- | :--- | :---: | :---: | :---: |
-| **V1 (CNN Baseline)** | 2D Spectrogram | 8.50% | 58.85% | +50.35% |
-| **V2 (Deep ResNet)** | 2D Spectrogram | 4.10% | 67.48% | +63.38% |
-| **V4 (RawNet2)** | 1D Raw Waveform | 3.40% | 55.66% | +52.26% |
-| **V3 (XLS-R)** | 1D Raw Waveform | 2.80% | 18.37% | +15.57% |
-| **V5 (Orthogonal Fusion)**| Mixed (1D + 2D) | — | **12.15%** | — |
+| **V1 (CNN Baseline)** | 2D Spectrogram | 0.35% | 58.85% | +58.50% |
+| **V2 (Deep ResNet)** | 2D Spectrogram | 0.42% | 67.48% | +67.06% |
+| **V4 (RawNet2)** | 1D Raw Waveform | 1.41% | 55.66% | +54.25% |
+| **V3 (XLS-R)** | 1D Raw Waveform | 0.21% | 18.37% | +18.16% |
+| **V5 (Orthogonal Fusion)**| Mixed (1D + 2D) | 0.14% | **12.15%** | +12.01% |
 
 ### Key Insights
-* **Spatial and Physical Overfitting:** Purely convolutional spatial layers (V1, V2) and parameter-optimized physical frontends (V4) collapse under dataset shift, showing extreme sensitivity to out-of-domain channel acoustics.
-* **Self-Supervised Stability:** Large-scale multilingual pre-training (V3) provides superior domain abstraction, anchoring features in semantic vocal tract characteristics rather than acoustic background conditions.
-* **Error Decorrelation:** Merging disjoint 1D and 2D modeling topologies stabilizes post-classification decision vectors, mitigating individual failure loops.
+* **Spatial and Physical Overfitting:** Purely convolutional spatial layers (V1, V2) and parameter-optimized physical frontends (V4) collapse under dataset shift, showing extreme sensitivity to out-of-domain channel acoustics. In-domain accuracy yields near-perfect convergence, confirming substantial shortcut learning during training.
+* **Self-Supervised Stability:** Large-scale multilingual pre-training (V3) provides superior domain abstraction, anchoring features in semantic vocal tract characteristics rather than acoustic background conditions, minimizing performance degradation.
+* **Error Decorrelation:** Merging disjoint 1D and 2D modeling topologies stabilizes post-classification decision vectors, mitigating individual failure loops and yielding the lowest overall target error profile.
 
 ---
 
