@@ -74,7 +74,7 @@ To support complete benchmark verifiability, all training and evaluation passes 
 ### 1. Environment Setup
 Clone the repository and build the workspace environment dependencies:
 ```bash
-git clone [https://github.com/yourusername/audio-deepfake-domain-shift.git](https://github.com/yourusername/audio-deepfake-domain-shift.git)
+git clone https://github.com/Kartel07/Audio-Deepfake-Detection.git
 cd audio-deepfake-domain-shift
 conda env create -f environment.yml
 conda activate deepfake-env
