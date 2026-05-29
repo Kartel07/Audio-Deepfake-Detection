@@ -1,3 +1,5 @@
+A cross-corpus evaluation framework analyzing the impact of architectural inductive biases (2D CNN, ResNet, 1D RawNet2, and self-supervised XLS-R Transformers) on speech deepfake detection under acoustic domain shift from Fake-or-Real (FoR) to ASVspoof 5.
+
 # Empirical Evaluation of Architectural Inductive Biases in Audio Deepfake Detection Under Acoustic Domain Shift
 
 This repository contains the complete implementation, evaluation pipelines, and raw benchmark score exports for a controlled comparative study exploring how distinct neural network topologies generalize under severe cross-corpus acoustic domain shift. 
@@ -71,10 +73,8 @@ To support complete benchmark verifiability, all training and evaluation passes 
 
 ## Installation and Execution
 
-### 1. Environment Setup
-Clone the repository and build the workspace environment dependencies:
+### 1. Environment Setup (VSCode / venv)
+Clone the repository and open the project directory in VSCode:
 ```bash
-git clone https://github.com/Kartel07/Audio-Deepfake-Detection.git
+git clone [https://github.com/yourusername/audio-deepfake-domain-shift.git](https://github.com/yourusername/audio-deepfake-domain-shift.git)
 cd audio-deepfake-domain-shift
-conda env create -f environment.yml
-conda activate deepfake-env
