@@ -76,5 +76,5 @@ To support complete benchmark verifiability, all training and evaluation passes 
 ### 1. Environment Setup (VSCode / venv)
 Clone the repository and open the project directory in VSCode:
 ```bash
-git clone [https://github.com/yourusername/audio-deepfake-domain-shift.git](https://github.com/yourusername/audio-deepfake-domain-shift.git)
+git clone (https://github.com/Kartel07/Audio-Deepfake-Detection.git)
 cd audio-deepfake-domain-shift
